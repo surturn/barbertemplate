@@ -43,8 +43,8 @@ export function ArcCarouselHero() {
   const prev = () => setActive((a) => (a - 1 + SLIDES.length) % SLIDES.length);
 
   // Arc geometry — center sits off-screen left, cards fan along right edge.
-  const ARC_STEP = 11; // degrees between cards
-  const RADIUS = 520; // px
+  const ARC_STEP = 9; // degrees between cards
+  const RADIUS = 460; // px
 
   return (
     <section className="relative isolate overflow-hidden border-b border-primary/20">
@@ -180,9 +180,9 @@ export function ArcCarouselHero() {
                     key={s.title}
                     onClick={() => setActive(i)}
                     aria-label={s.title}
-                    className="absolute left-1/2 top-1/2 origin-[0_50%] transition-all duration-700 ease-out"
+                    className="absolute left-0 top-1/2 transition-all duration-700 ease-out"
                     style={{
-                      transform: `translate(-50%, -50%) rotate(${angle}deg) translateX(${RADIUS}px) rotate(${-angle * 0.35}deg) scale(${scale})`,
+                      transform: `translateY(-50%) rotate(${angle}deg) translateX(${RADIUS}px) rotate(${-angle * 0.55}deg) translateX(-50%) scale(${scale})`,
                       zIndex: z,
                       opacity,
                     }}
@@ -207,8 +207,8 @@ export function ArcCarouselHero() {
                       <div
                         className={`absolute inset-0 transition-opacity duration-500 ${
                           isActive
-                            ? "bg-gradient-to-t from-background/70 via-transparent to-transparent opacity-100"
-                            : "bg-background/40 opacity-100"
+                            ? "bg-gradient-to-t from-background/80 via-background/10 to-transparent"
+                            : "bg-background/15"
                         }`}
                       />
                       {isActive && (
