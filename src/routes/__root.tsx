@@ -7,7 +7,6 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect } from "react";
 
 import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/dm/SiteHeader";
@@ -73,6 +72,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
+  links: () => [
+    { rel: "stylesheet", href: appCss },
+    { rel: "preconnect", href: "https://fonts.googleapis.com" },
+    { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+    { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" }
+  ],
+  meta: () => [
+    { charSet: "utf-8" },
+    { name: "viewport", content: "width=device-width, initial-scale=1.0" },
+    { title: "D&M Parlour" },
+  ],
 });
 
 function RootComponent() {
@@ -80,14 +90,22 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex min-h-screen flex-col bg-background text-foreground">
-        <SiteHeader />
-        <main className="flex-1">
-          <Outlet />
-        </main>
-        <SiteFooter />
-      </div>
-      <Toaster />
+      <html lang="en" className="dark">
+        <head>
+          <HeadContent />
+        </head>
+        <body className="bg-background text-foreground">
+          <div className="flex min-h-screen flex-col">
+            <SiteHeader />
+            <main className="flex-1">
+              <Outlet />
+            </main>
+            <SiteFooter />
+          </div>
+          <Toaster />
+          <Scripts />
+        </body>
+      </html>
     </QueryClientProvider>
   );
 }
