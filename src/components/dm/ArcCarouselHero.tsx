@@ -58,10 +58,10 @@ export function ArcCarouselHero() {
   const isMobile = width < 768;
   const isTablet = width >= 768 && width < 1024;
 
-  const ARC_STEP = isMobile ? 14 : isTablet ? 11 : 9;
-  const RADIUS = isMobile ? 220 : isTablet ? 340 : 460;
-  const CARD_W = isMobile ? 100 : isTablet ? 140 : 180;
-  const CARD_H = isMobile ? 150 : isTablet ? 240 : 360;
+  const ARC_STEP = isMobile ? 16 : isTablet ? 11 : 9;
+  const RADIUS = isMobile ? 180 : isTablet ? 340 : 460;
+  const CARD_W = isMobile ? 120 : isTablet ? 140 : 180;
+  const CARD_H = isMobile ? 180 : isTablet ? 240 : 360;
   const CARD_RADIUS = isMobile ? 14 : isTablet ? 18 : 22;
 
   // Touch handling
@@ -100,7 +100,7 @@ export function ArcCarouselHero() {
         onMouseLeave={() => setPaused(false)}
       >
         {/* ===== ARC OF IMAGES — right side, all screens ===== */}
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-[55%] sm:w-[50%] lg:w-[55%]">
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-[65%] sm:w-[50%] lg:w-[55%]">
           {/* Subtle glow behind arc */}
           <div
             aria-hidden
